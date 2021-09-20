@@ -111,7 +111,6 @@ class Exporter
      * SebastianBergmann\Exporter\Exporter::export().
      *
      * Newlines are replaced by the visible string '\n'.
-     * Contents of arrays and objects (if any) are replaced by '...'.
      *
      * @return string
      *
@@ -133,21 +132,6 @@ class Exporter
             }
 
             return $string;
-        }
-
-        if (is_object($value)) {
-            return sprintf(
-                '%s Object (%s)',
-                get_class($value),
-                count($this->toArray($value)) > 0 ? '...' : ''
-            );
-        }
-
-        if (is_array($value)) {
-            return sprintf(
-                'Array (%s)',
-                count($value) > 0 ? '...' : ''
-            );
         }
 
         return $this->export($value);
