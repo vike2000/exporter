@@ -89,15 +89,15 @@ class Exporter
         foreach ($array as $key => $value) {
             if (is_array($value)) {
                 if ($context->contains($data[$key]) !== false) {
-                    $result[] = '*RECURSION*';
+                    $result[] = $key . ' => ' . '*RECURSION*';
                 } else {
-                    $result[] = sprintf(
+                    $result[] = $key . ' => ' . sprintf(
                         'array(%s)',
                         $this->shortenedRecursiveExport($data[$key], $context)
                     );
                 }
             } else {
-                $result[] = $exporter->shortenedExport($value);
+                $result[] = $key . ' => ' . $exporter->shortenedExport($value);
             }
         }
 
