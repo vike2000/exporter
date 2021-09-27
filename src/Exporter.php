@@ -92,7 +92,7 @@ class Exporter
                     $result[] = $key . ' => ' . '*RECURSION*';
                 } else {
                     $result[] = $key . ' => ' . sprintf(
-                        'array(%s)',
+                        '[%s]',
                         $this->shortenedRecursiveExport($data[$key], $context)
                     );
                 }
